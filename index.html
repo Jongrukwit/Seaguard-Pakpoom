@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Seaguard — เรียนรู้โลกของหญ้าทะเล</title>
+<meta name="description" content="แพลตฟอร์มเรียนรู้เรื่องหญ้าทะเลแบบอินเทอร์แอกทีฟ พร้อมเกม แบบทดสอบ และแดชบอร์ดติดตามความก้าวหน้า" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<a href="#main" class="skip-link">ข้ามไปยังเนื้อหาหลัก</a>
+
+<!-- Loading Screen -->
+<div id="loading-screen">
+  <div class="loading-blade-wrap">
+    <div class="blade" style="height:40px"></div>
+    <div class="blade" style="height:65px"></div>
+    <div class="blade" style="height:50px"></div>
+    <div class="blade" style="height:70px"></div>
+    <div class="blade" style="height:45px"></div>
+  </div>
+  <p class="loading-text" data-th="กำลังโหลดโลกใต้ทะเล..." data-en="Loading the underwater world...">กำลังโหลดโลกใต้ทะเล...</p>
+</div>
+
+<!-- Navbar -->
+<header class="site-nav">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="20" fill="#2E7D5B"/>
+        <path d="M12 28C12 20 14 12 20 8C26 12 28 20 28 28" stroke="#9FE3E6" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <span data-th="Seaguard" data-en="Seaguard">Seaguard</span>
+    </a>
+    <nav class="nav-links" id="nav-links">
+      <a href="index.html" data-th="หน้าแรก" data-en="Home">หน้าแรก</a>
+      <a href="learning.html" data-th="เรียนรู้" data-en="Learn">เรียนรู้</a>
+      <a href="game.html" data-th="เกม" data-en="Games">เกม</a>
+      <a href="quiz.html" data-th="แบบทดสอบ" data-en="Quiz">แบบทดสอบ</a>
+      <a href="login.html" data-th="เข้าสู่ระบบ" data-en="Log in">เข้าสู่ระบบ</a>
+    </nav>
+    <div class="nav-tools">
+      <button class="icon-toggle" id="lang-toggle" aria-label="สลับภาษา">TH</button>
+      <button class="icon-toggle" id="theme-toggle" aria-label="สลับโหมดสี">🌙</button>
+      <button class="icon-toggle nav-burger" id="nav-burger" aria-label="เมนู" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <!-- Hero -->
+  <section class="hero-landing">
+    <div class="container">
+      <div>
+        <span class="eyebrow" data-th="ผืนป่าสีเขียวใต้ทะเล" data-en="THE OCEAN'S HIDDEN GREEN">ผืนป่าสีเขียวใต้ทะเล</span>
+        <h1>ทุกลมหายใจของทะเล<br>เริ่มต้นจาก <span>หญ้าทะเล</span></h1>
+        <p data-th="สำรวจระบบนิเวศหญ้าทะเล ผ่านบทเรียนอินเทอร์แอกทีฟ เกมปลูกหญ้าทะเล และแบบทดสอบวัดความเข้าใจ พร้อมติดตามความก้าวหน้าของคุณแบบเรียลไทม์" data-en="Explore the seagrass ecosystem through interactive lessons, planting games, and quizzes — while tracking your progress in real time.">สำรวจระบบนิเวศหญ้าทะเล ผ่านบทเรียนอินเทอร์แอกทีฟ เกมปลูกหญ้าทะเล และแบบทดสอบวัดความเข้าใจ พร้อมติดตามความก้าวหน้าของคุณแบบเรียลไทม์</p>
+        <div class="hero-cta">
+          <a href="signup.html" class="btn btn-primary" data-th="เริ่มเรียนรู้ฟรี" data-en="Start learning free">เริ่มเรียนรู้ฟรี</a>
+          <a href="learning.html" class="btn btn-ghost" data-th="สำรวจบทเรียน" data-en="Explore lessons">สำรวจบทเรียน</a>
+        </div>
+      </div>
+      <div class="hero-stage" aria-hidden="true">
+        <div class="ph-img" style="height:100%"><img src="assets/images/Seagrass_Payun.png" alt=""></div>
+        <div class="bubble" style="width:14px;height:14px;left:20%;bottom:0;animation-duration:6s"></div>
+        <div class="bubble" style="width:8px;height:8px;left:45%;bottom:0;animation-duration:4.5s;animation-delay:1s"></div>
+        <div class="bubble" style="width:20px;height:20px;left:70%;bottom:0;animation-duration:7s;animation-delay:2s"></div>
+        <div class="bubble" style="width:10px;height:10px;left:85%;bottom:0;animation-duration:5s;animation-delay:0.5s"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wave-divider" aria-hidden="true">
+    <svg viewBox="0 0 1200 80" preserveAspectRatio="none"><path d="M0,40 C300,90 900,-10 1200,40 L1200,80 L0,80 Z" fill="#F2E8D5"></path></svg>
+  </div>
+
+  <!-- Features -->
+  <section class="container">
+    <span class="eyebrow" data-th="ทำไมต้อง Seaguard" data-en="WHY Seaguard">ทำไมต้อง Seaguard</span>
+    <h2 class="section-title" data-th="เรียนรู้แบบลงมือทำ ไม่ใช่แค่อ่าน" data-en="Learn by doing, not just reading">เรียนรู้แบบลงมือทำ ไม่ใช่แค่อ่าน</h2>
+    <p class="section-sub" data-th="ทุกฟีเจอร์ถูกออกแบบให้เข้าใจง่าย สนุก และจดจำได้นาน" data-en="Every feature is designed to be easy to understand, fun, and memorable.">ทุกฟีเจอร์ถูกออกแบบให้เข้าใจง่าย สนุก และจดจำได้นาน</p>
+    <div class="feature-grid">
+      <div class="feature-card glass reveal">
+        <div class="icon-circle">🌿</div>
+        <h3 data-th="บทเรียนอินเทอร์แอกทีฟ" data-en="Interactive lessons">บทเรียนอินเทอร์แอกทีฟ</h3>
+        <p data-th="สำรวจระบบนิเวศ ลากปลูกหญ้าทะเล และจำลองคุณภาพน้ำแบบเรียลไทม์" data-en="Explore ecosystems, drag-and-drop planting, and real-time water simulations.">สำรวจระบบนิเวศ ลากปลูกหญ้าทะเล และจำลองคุณภาพน้ำแบบเรียลไทม์</p>
+      </div>
+      <div class="feature-card glass reveal">
+        <div class="icon-circle">🎮</div>
+        <h3 data-th="5 มินิเกม" data-en="5 mini games">5 มินิเกม</h3>
+        <p data-th="ตั้งแต่ปลูกหญ้าทะเลไปจนถึงช่วยพะยูนหาอาหาร พร้อมคะแนนและ High Score" data-en="From planting seagrass to helping a dugong find food — with scores and high scores.">ตั้งแต่ปลูกหญ้าทะเลไปจนถึงช่วยพะยูนหาอาหาร พร้อมคะแนนและ High Score</p>
+      </div>
+      <div class="feature-card glass reveal">
+        <div class="icon-circle">📝</div>
+        <h3 data-th="แบบทดสอบ 20 ข้อ" data-en="20-question quiz">แบบทดสอบ 20 ข้อ</h3>
+        <p data-th="วัดความเข้าใจแบบสุ่มคำถาม พร้อมเฉลยและคำอธิบายทุกข้อ" data-en="Randomized questions with answers and explanations for every item.">วัดความเข้าใจแบบสุ่มคำถาม พร้อมเฉลยและคำอธิบายทุกข้อ</p>
+      </div>
+      <div class="feature-card glass reveal">
+        <div class="icon-circle">📊</div>
+        <h3 data-th="แดชบอร์ดติดตามผล" data-en="Progress dashboard">แดชบอร์ดติดตามผล</h3>
+        <p data-th="ดูสถิติการเรียน คะแนนเกม และความก้าวหน้าของคุณแบบภาพรวม" data-en="See your learning stats, game scores, and overall progress at a glance.">ดูสถิติการเรียน คะแนนเกม และความก้าวหน้าของคุณแบบภาพรวม</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="wave-divider" aria-hidden="true">
+    <svg viewBox="0 0 1200 80" preserveAspectRatio="none"><path d="M0,40 C300,-10 900,90 1200,40 L1200,0 L0,0 Z" fill="#0B3D42"></path></svg>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="meadow-footer">
+  <div class="container meadow-footer-grid">
+    <div>
+      <h4 data-th="Seaguard" data-en="Seaguard">Seaguard</h4>
+      <p data-th="แพลตฟอร์มเรียนรู้เรื่องหญ้าทะเลสำหรับทุกวัย สร้างขึ้นเพื่อปลูกฝังความเข้าใจและความรักในระบบนิเวศทางทะเล" data-en="A seagrass learning platform for all ages, built to grow understanding and love for marine ecosystems.">แพลตฟอร์มเรียนรู้เรื่องหญ้าทะเลสำหรับทุกวัย</p>
+    </div>
+    <div>
+      <h4 data-th="เมนู" data-en="Menu">เมนู</h4>
+      <ul>
+        <li><a href="learning.html" data-th="เรียนรู้" data-en="Learn">เรียนรู้</a></li>
+        <li><a href="game.html" data-th="เกม" data-en="Games">เกม</a></li>
+        <li><a href="quiz.html" data-th="แบบทดสอบ" data-en="Quiz">แบบทดสอบ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 data-th="บัญชี" data-en="Account">บัญชี</h4>
+      <ul>
+        <li><a href="login.html" data-th="เข้าสู่ระบบ" data-en="Log in">เข้าสู่ระบบ</a></li>
+        <li><a href="signup.html" data-th="สมัครสมาชิก" data-en="Sign up">สมัครสมาชิก</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="blade-row" aria-hidden="true"></div>
+  <div class="container bottom">
+    <span>© 2026 Seaguard — Educational Demo</span>
+    <span data-th="สร้างด้วย 💙 นักเรียนโรงเรียนวิเชียรมาตุ" data-en="Made with 💙 for wicheinmatu student">สร้างด้วย 💙 นักเรียนโรงเรียนวิเชียรมาตุ</span>
+  </div>
+</footer>
+
+<div id="toast-stack"></div>
+<script src="js/main.js"></script>
+</body>
+</html>

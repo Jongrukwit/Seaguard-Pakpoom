@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>แดชบอร์ด — Seaguard</title>
+<link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+
+<div id="loading-screen">
+  <div class="loading-blade-wrap">
+    <div class="blade" style="height:40px"></div><div class="blade" style="height:65px"></div>
+    <div class="blade" style="height:50px"></div><div class="blade" style="height:70px"></div>
+    <div class="blade" style="height:45px"></div>
+  </div>
+  <p class="loading-text">กำลังโหลดแดชบอร์ด...</p>
+</div>
+
+<div class="dash-shell">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="20" fill="#3FBAC2"/>
+        <path d="M12 28C12 20 14 12 20 8C26 12 28 20 28 28" stroke="#0B3D42" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <span>Seaguard</span>
+    </a>
+    <nav class="side-nav">
+      <a href="dashboard.html" class="active"><span class="ic">📊</span> Dashboard</a>
+      <a href="learning.html"><span class="ic">🌿</span> Learning</a>
+      <a href="game.html"><span class="ic">🎮</span> Game</a>
+      <a href="quiz.html"><span class="ic">📝</span> Quiz</a>
+    </nav>
+    <div class="sidebar-foot">
+      <a href="#" id="logout-btn"><span class="ic">🚪</span> Logout</a>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="dash-main">
+    <header class="dash-topbar">
+      <div style="display:flex;align-items:center;gap:10px">
+        <button class="icon-toggle" id="sidebar-burger" aria-label="เมนู" style="display:none">☰</button>
+        <div class="topbar-title">
+          <h1>ข้อมูลเซนเซอร์ระดับน้ำและอุณหภูมิ</h1>
+          <p>ข้อมูลจาก Google Sheets อัปเดตล่าสุดวันนี้</p>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <button class="icon-toggle" id="lang-toggle">TH</button>
+        <button class="icon-toggle" id="theme-toggle">🌙</button>
+        <button class="notif-btn" aria-label="การแจ้งเตือน">🔔<span class="notif-dot"></span></button>
+        <div class="profile-chip">
+          <div class="avatar-circle" id="profile-avatar">?</div>
+          <div>
+            <div class="name" id="profile-name">ผู้ใช้</div>
+            <div class="role">ผู้เรียน</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="dash-content">
+      <div class="data-source-banner glass" id="data-source-banner"></div>
+
+      <section class="stat-grid stat-grid-2col" id="stat-grid" aria-label="ค่าล่าสุดจากเซนเซอร์"></section>
+
+      <section class="chart-grid">
+        <div class="chart-card glass reveal">
+          <h3>แนวโน้มระดับน้ำ</h3>
+          <p class="chart-sub">Line Chart — ข้อมูลระดับน้ำ (เมตร) ตามเวลา จาก Google Sheets</p>
+          <canvas id="waterLevelChart" aria-label="กราฟเส้นแสดงระดับน้ำ" role="img"></canvas>
+        </div>
+        <div class="chart-card glass reveal">
+          <h3>แนวโน้มอุณหภูมิ</h3>
+          <p class="chart-sub">Line Chart — ข้อมูลอุณหภูมิ (°C) ตามเวลา จาก Google Sheets</p>
+          <canvas id="temperatureChart" aria-label="กราฟเส้นแสดงอุณหภูมิ" role="img"></canvas>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<div id="toast-stack"></div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

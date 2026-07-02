@@ -1,0 +1,228 @@
+@import url('style.css');
+
+/* ==========================================================================
+   AUTH PAGES (login.html / signup.html)
+   ========================================================================== */
+.auth-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: var(--nav-height);
+}
+
+.auth-visual {
+  position: relative;
+  background: linear-gradient(160deg, var(--deep-sea), var(--seagrass-dark) 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.auth-visual .ph-img {
+  width: 78%;
+  height: 60%;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--lagoon-light);
+}
+
+.auth-visual::before,
+.auth-visual::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(63, 186, 194, 0.18);
+}
+
+.auth-visual::before {
+  width: 260px;
+  height: 260px;
+  top: -60px;
+  left: -60px;
+}
+
+.auth-visual::after {
+  width: 180px;
+  height: 180px;
+  bottom: -40px;
+  right: -30px;
+}
+
+.auth-visual-caption {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  right: 40px;
+  color: var(--foam);
+  z-index: 2;
+}
+
+.auth-visual-caption h3 {
+  font-size: 1.3rem;
+  margin-bottom: 6px;
+}
+
+.auth-visual-caption p {
+  color: rgba(250, 253, 251, 0.75);
+  font-size: 0.92rem;
+}
+
+.auth-form-side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 44px 38px;
+}
+
+.auth-card .brand {
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.auth-card h2 {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+  color: var(--deep-sea);
+}
+
+[data-theme="dark"] .auth-card h2 {
+  color: var(--foam);
+}
+
+.auth-card .sub {
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  margin-bottom: 28px;
+}
+
+.field {
+  margin-bottom: 18px;
+}
+
+.field label {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  color: var(--ink-soft);
+}
+
+.field input {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1.5px solid var(--glass-border);
+  transition: border-color var(--transition), background var(--transition);
+}
+
+[data-theme="dark"] .field input {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.field input:focus {
+  border-color: var(--seagrass);
+}
+
+.field-error {
+  color: var(--coral);
+  font-size: 0.8rem;
+  margin-top: 5px;
+  min-height: 1em;
+}
+
+.row-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  font-size: 0.85rem;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink-soft);
+}
+
+.checkbox-row input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--seagrass);
+}
+
+.forgot-link {
+  color: var(--seagrass);
+  font-family: var(--font-ui);
+}
+
+.divider-or {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 22px 0;
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+}
+
+.divider-or::before,
+.divider-or::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--glass-border);
+}
+
+.btn-google {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.7);
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  transition: background var(--transition);
+}
+
+[data-theme="dark"] .btn-google {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-google:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.switch-line {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.switch-line a {
+  color: var(--seagrass);
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .auth-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-visual {
+    display: none;
+  }
+}

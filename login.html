@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>เข้าสู่ระบบ — Seaguard</title>
+<link rel="stylesheet" href="css/auth.css" />
+</head>
+<body>
+
+<div id="loading-screen">
+  <div class="loading-blade-wrap">
+    <div class="blade" style="height:40px"></div><div class="blade" style="height:65px"></div>
+    <div class="blade" style="height:50px"></div><div class="blade" style="height:70px"></div>
+    <div class="blade" style="height:45px"></div>
+  </div>
+  <p class="loading-text">กำลังโหลด...</p>
+</div>
+
+<main class="auth-shell">
+  <section class="auth-visual" aria-hidden="true">
+    <div class="ph-img"><img src="assets/images/seafloor _with_sunlight.jpg" alt=""></div>
+    <div class="auth-visual-caption">
+      <h3>ยินดีต้อนรับกลับ 🌊</h3>
+      <p>เข้าสู่ระบบเพื่อดำเนินบทเรียน เกม และแบบทดสอบต่อจากที่ค้างไว้</p>
+    </div>
+  </section>
+
+  <section class="auth-form-side">
+    <div class="auth-card glass">
+      <a href="index.html" class="brand">
+        <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="20" fill="#2E7D5B"/>
+          <path d="M12 28C12 20 14 12 20 8C26 12 28 20 28 28" stroke="#9FE3E6" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <span>Seaguard</span>
+      </a>
+      <h2>เข้าสู่ระบบ</h2>
+      <p class="sub">กรอกอีเมลและรหัสผ่านเพื่อเข้าสู่แดชบอร์ดของคุณ</p>
+
+      <form id="login-form" novalidate>
+        <div class="field">
+          <label for="login-email">อีเมล</label>
+          <input type="email" id="login-email" name="email" placeholder="you@example.com" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="login-password">รหัสผ่าน</label>
+          <input type="password" id="login-password" name="password" placeholder="••••••••" autocomplete="current-password" required />
+        </div>
+        <p class="field-error" id="login-error" role="alert"></p>
+        <div class="row-between">
+          <label class="checkbox-row">
+            <input type="checkbox" name="remember" />
+            จดจำฉันไว้
+          </label>
+          <a href="#" class="forgot-link" id="forgot-link">ลืมรหัสผ่าน?</a>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">เข้าสู่ระบบ</button>
+      </form>
+
+      <div class="divider-or">หรือ</div>
+      <button class="btn-google" id="google-login-btn" type="button">
+        <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.9c1.7-1.56 2.7-3.87 2.7-6.62z"/><path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.9-2.26c-.8.54-1.84.86-3.06.86-2.35 0-4.34-1.59-5.05-3.72H.98v2.33A9 9 0 0 0 9 18z"/><path fill="#FBBC05" d="M3.95 10.7A5.4 5.4 0 0 1 3.66 9c0-.59.1-1.17.29-1.7V4.97H.98A9 9 0 0 0 0 9c0 1.45.35 2.83.98 4.03l2.97-2.33z"/><path fill="#EA4335" d="M9 3.58c1.32 0 2.51.46 3.44 1.35l2.58-2.58C13.46.89 11.43 0 9 0A9 9 0 0 0 .98 4.97l2.97 2.33C4.66 5.17 6.65 3.58 9 3.58z"/></svg>
+        เข้าสู่ระบบด้วย Google
+      </button>
+
+      <p class="switch-line">ยังไม่มีบัญชี? <a href="signup.html">สมัครสมาชิก</a></p>
+    </div>
+  </section>
+</main>
+
+<div id="toast-stack"></div>
+<script src="js/main.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

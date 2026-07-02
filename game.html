@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>เกม — Seaguard</title>
+<link rel="stylesheet" href="css/game.css" />
+</head>
+<body class="game-body">
+
+<div id="loading-screen">
+  <div class="loading-blade-wrap">
+    <div class="blade" style="height:40px"></div><div class="blade" style="height:65px"></div>
+    <div class="blade" style="height:50px"></div><div class="blade" style="height:70px"></div>
+    <div class="blade" style="height:45px"></div>
+  </div>
+  <p class="loading-text">กำลังโหลดเกม...</p>
+</div>
+
+<header class="site-nav">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="20" fill="#2E7D5B"/><path d="M12 28C12 20 14 12 20 8C26 12 28 20 28 28" stroke="#9FE3E6" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <span>Seaguard</span>
+    </a>
+    <nav class="nav-links">
+      <a href="dashboard.html">แดชบอร์ด</a>
+      <a href="learning.html">เรียนรู้</a>
+      <a href="game.html" class="active">เกม</a>
+      <a href="quiz.html">แบบทดสอบ</a>
+      <a href="#" id="logout-btn">ออกจากระบบ</a>
+    </nav>
+    <div class="nav-tools">
+      <button class="icon-toggle" id="sound-toggle" aria-label="เปิด/ปิดเสียง">🔊</button>
+      <button class="icon-toggle" id="theme-toggle">🌙</button>
+      <button class="icon-toggle nav-burger" id="nav-burger">☰</button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="game-hero">
+    <span class="eyebrow">เล่นแล้วได้ความรู้</span>
+    <h1 class="section-title">มินิเกมหญ้าทะเล</h1>
+    <p class="section-sub" style="margin-left:auto;margin-right:auto">เลือกเกมที่อยากเล่นด้านล่าง ทุกเกมมีคะแนน สถิติสูงสุด และจับเวลา</p>
+  </section>
+
+  <div class="game-tabs">
+    <button class="game-tab active" data-target="panel-g1">🌱 ปลูกหญ้าทะเล</button>
+    <button class="game-tab" data-target="panel-g2">🧠 จับคู่ภาพ</button>
+    <button class="game-tab" data-target="panel-g3">🗑️ เก็บขยะทะเล</button>
+    <button class="game-tab" data-target="panel-g4">🐋 พะยูนหาอาหาร</button>
+    <button class="game-tab" data-target="panel-g5">🧩 ต่อภาพปริศนา</button>
+  </div>
+
+  <!-- GAME 1 -->
+  <section class="game-panel active" id="panel-g1">
+    <div class="game-hud glass">
+      <div class="hud-stats">
+        <div class="hud-stat"><div class="num" id="g1-score">0</div><div class="lbl">คะแนน</div></div>
+        <div class="hud-stat"><div class="num" id="g1-high">0</div><div class="lbl">สถิติสูงสุด</div></div>
+        <div class="hud-stat"><div class="num" id="g1-timer">45</div><div class="lbl">วินาที</div></div>
+      </div>
+      <div class="hud-progress"><div class="hud-progress-bar" id="g1-bar"></div></div>
+      <div class="hud-actions"><button class="btn btn-ghost" id="g1-replay">🔁 เล่นใหม่</button></div>
+    </div>
+    <div class="game-stage glass">
+      <p class="game-instructions">ลากต้นกล้า 🌱 จากถาดไปวางบนพื้นที่มีขอบเส้นประ ให้ครบก่อนหมดเวลา</p>
+      <div class="g1-zone" id="g1-zone"></div>
+      <div class="g1-tray" id="g1-tray"></div>
+      <div class="game-overlay" id="g1-overlay" style="display:none">
+        <h3></h3><p></p>
+        <button class="btn btn-primary" onclick="initGame1()">เล่นอีกครั้ง</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- GAME 2 -->
+  <section class="game-panel" id="panel-g2">
+    <div class="game-hud glass">
+      <div class="hud-stats">
+        <div class="hud-stat"><div class="num" id="g2-score">0</div><div class="lbl">คะแนน</div></div>
+        <div class="hud-stat"><div class="num" id="g2-high">0</div><div class="lbl">สถิติสูงสุด</div></div>
+      </div>
+      <div class="hud-progress"><div class="hud-progress-bar" id="g2-bar"></div></div>
+      <div class="hud-actions"><button class="btn btn-ghost" id="g2-replay">🔁 เล่นใหม่</button></div>
+    </div>
+    <div class="game-stage glass">
+      <p class="game-instructions">คลิกเปิดการ์ดทีละ 2 ใบ เพื่อจับคู่สัตว์ทะเลให้ครบ ยิ่งใช้ครั้งน้อยยิ่งได้คะแนนสูง</p>
+      <div class="g2-grid" id="g2-grid"></div>
+      <div class="game-overlay" id="g2-overlay" style="display:none">
+        <h3></h3><p></p>
+        <button class="btn btn-primary" onclick="initGame2()">เล่นอีกครั้ง</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- GAME 3 -->
+  <section class="game-panel" id="panel-g3">
+    <div class="game-hud glass">
+      <div class="hud-stats">
+        <div class="hud-stat"><div class="num" id="g3-score">0</div><div class="lbl">คะแนน</div></div>
+        <div class="hud-stat"><div class="num" id="g3-high">0</div><div class="lbl">สถิติสูงสุด</div></div>
+        <div class="hud-stat"><div class="num" id="g3-timer">40</div><div class="lbl">วินาที</div></div>
+      </div>
+      <div class="hud-progress"><div class="hud-progress-bar" id="g3-bar"></div></div>
+      <div class="hud-actions"><button class="btn btn-ghost" id="g3-replay">🔁 เล่นใหม่</button></div>
+    </div>
+    <div class="game-stage glass">
+      <p class="game-instructions">คลิกหรือลากขยะที่ลอยลงมาใส่ถัง ระวังอย่าเก็บเปลือกหอย 🐚 หรือหญ้าทะเล 🌿 ที่ไม่ใช่ขยะ</p>
+      <div class="g3-stage" id="g3-stage">
+        <span class="badge g3-combo" id="g3-combo">🔥 คอมโบ x0</span>
+        <div class="g3-bin" id="g3-bin">🗑️</div>
+      </div>
+      <div class="game-overlay" id="g3-overlay" style="display:none">
+        <h3></h3><p></p>
+        <button class="btn btn-primary" onclick="initGame3()">เล่นอีกครั้ง</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- GAME 4 -->
+  <section class="game-panel" id="panel-g4">
+    <div class="game-hud glass">
+      <div class="hud-stats">
+        <div class="hud-stat"><div class="num" id="g4-score">0</div><div class="lbl">คะแนน</div></div>
+        <div class="hud-stat"><div class="num" id="g4-high">0</div><div class="lbl">สถิติสูงสุด</div></div>
+        <div class="hud-stat"><div class="num" id="g4-timer">40</div><div class="lbl">วินาที</div></div>
+      </div>
+      <div class="hud-progress"><div class="hud-progress-bar" id="g4-bar"></div></div>
+      <div class="hud-actions"><button class="btn btn-ghost" id="g4-replay">🔁 เล่นใหม่</button></div>
+    </div>
+    <div class="game-stage glass">
+      <p class="game-instructions">ใช้ปุ่มลูกศร (หรือคลิก/แตะ) บังคับพะยูนให้กินหญ้าทะเล 🌿 และหลบขยะ 🥤</p>
+      <div class="g4-stage" id="g4-stage">
+        <div class="g4-dugong" id="g4-dugong">🐋</div>
+        <div class="g4-hint">ใช้ปุ่มลูกศรบนคีย์บอร์ด หรือคลิกตำแหน่งที่ต้องการเคลื่อนที่ไป</div>
+      </div>
+      <div class="game-overlay" id="g4-overlay" style="display:none">
+        <h3></h3><p></p>
+        <button class="btn btn-primary" onclick="initGame4()">เล่นอีกครั้ง</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- GAME 5 -->
+  <section class="game-panel" id="panel-g5">
+    <div class="game-hud glass">
+      <div class="hud-stats">
+        <div class="hud-stat"><div class="num" id="g5-score">0</div><div class="lbl">คะแนน</div></div>
+        <div class="hud-stat"><div class="num" id="g5-high">0</div><div class="lbl">สถิติสูงสุด</div></div>
+        <div class="hud-stat"><div class="num" id="g5-timer">0</div><div class="lbl">วินาที</div></div>
+      </div>
+      <div class="hud-progress"><div class="hud-progress-bar" id="g5-bar"></div></div>
+      <div class="hud-actions"><button class="btn btn-ghost" id="g5-replay">🔁 เล่นใหม่</button></div>
+    </div>
+    <div class="game-stage glass">
+      <p class="game-instructions">คลิกช่องที่อยู่ติดกับช่องว่าง เพื่อเลื่อนต่อภาพหมายเลข 1-8 ให้เรียงลำดับ</p>
+      <div class="g5-grid" id="g5-grid"></div>
+      <div class="game-overlay" id="g5-overlay" style="display:none">
+        <h3></h3><p></p>
+        <button class="btn btn-primary" onclick="initGame5()">เล่นอีกครั้ง</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="meadow-footer">
+  <div class="container meadow-footer-grid">
+    <div><h4>Seaguard</h4><p>แพลตฟอร์มเรียนรู้เรื่องหญ้าทะเลสำหรับทุกวัย</p></div>
+    <div><h4>เมนู</h4><ul><li><a href="learning.html">เรียนรู้</a></li><li><a href="quiz.html">แบบทดสอบ</a></li></ul></div>
+    <div><h4>บัญชี</h4><ul><li><a href="dashboard.html">แดชบอร์ด</a></li></ul></div>
+  </div>
+  <div class="blade-row" aria-hidden="true"></div>
+  <div class="container bottom"><span>© 2026 Seaguard</span><span>สร้างด้วย 💙 นักเรียนโรงเรียนวิเชียรมาตุ</span></div>
+</footer>
+
+<div id="toast-stack"></div>
+<script src="js/main.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>

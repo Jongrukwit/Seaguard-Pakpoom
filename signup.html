@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>สมัครสมาชิก — Seaguard</title>
+<link rel="stylesheet" href="css/auth.css" />
+</head>
+<body>
+
+<div id="loading-screen">
+  <div class="loading-blade-wrap">
+    <div class="blade" style="height:40px"></div><div class="blade" style="height:65px"></div>
+    <div class="blade" style="height:50px"></div><div class="blade" style="height:70px"></div>
+    <div class="blade" style="height:45px"></div>
+  </div>
+  <p class="loading-text">กำลังโหลด...</p>
+</div>
+
+<main class="auth-shell">
+  <section class="auth-visual" aria-hidden="true">
+    <div class="ph-img"><img src="assets/images/Dogong_swimming.jpg" alt=""></div>
+    <div class="auth-visual-caption">
+      <h3>เริ่มต้นการผจญภัยของคุณ 🐢</h3>
+      <p>สมัครสมาชิกฟรี เพื่อปลดล็อกบทเรียน เกม และแบบทดสอบทั้งหมด</p>
+    </div>
+  </section>
+
+  <section class="auth-form-side">
+    <div class="auth-card glass">
+      <a href="index.html" class="brand">
+        <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="20" fill="#2E7D5B"/>
+          <path d="M12 28C12 20 14 12 20 8C26 12 28 20 28 28" stroke="#9FE3E6" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <span>Seaguard</span>
+      </a>
+      <h2>สมัครสมาชิก</h2>
+      <p class="sub">สร้างบัญชีใหม่เพื่อเริ่มต้นเรียนรู้เรื่องหญ้าทะเล</p>
+
+      <form id="signup-form" novalidate>
+        <div class="field">
+          <label for="signup-name">ชื่อ</label>
+          <input type="text" id="signup-name" name="name" placeholder="ชื่อของคุณ" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="signup-email">อีเมล</label>
+          <input type="email" id="signup-email" name="email" placeholder="you@example.com" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="signup-password">รหัสผ่าน</label>
+          <input type="password" id="signup-password" name="password" placeholder="อย่างน้อย 6 ตัวอักษร" autocomplete="new-password" required />
+        </div>
+        <div class="field">
+          <label for="signup-confirm">ยืนยันรหัสผ่าน</label>
+          <input type="password" id="signup-confirm" name="confirm" placeholder="••••••••" autocomplete="new-password" required />
+        </div>
+        <p class="field-error" id="signup-error" role="alert"></p>
+        <button type="submit" class="btn btn-primary btn-block">สมัครสมาชิก</button>
+      </form>
+
+      <p class="switch-line">มีบัญชีอยู่แล้ว? <a href="login.html">เข้าสู่ระบบ</a></p>
+    </div>
+  </section>
+</main>
+
+<div id="toast-stack"></div>
+<script src="js/main.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

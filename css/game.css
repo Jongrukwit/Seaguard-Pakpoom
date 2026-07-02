@@ -1,0 +1,370 @@
+@import url('style.css');
+
+/* ==========================================================================
+   GAME HUB
+   ========================================================================== */
+body.game-body {
+  padding-top: var(--nav-height);
+}
+
+.game-hero {
+  padding: 60px 0 30px;
+  text-align: center;
+}
+
+.game-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 36px;
+}
+
+.game-tab {
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1.5px solid transparent;
+  transition: all var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+[data-theme="dark"] .game-tab {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.game-tab.active {
+  background: linear-gradient(135deg, var(--seagrass), var(--lagoon));
+  color: var(--foam);
+}
+
+.game-tab:hover:not(.active) {
+  border-color: var(--seagrass);
+}
+
+.game-panel {
+  display: none;
+}
+
+.game-panel.active {
+  display: block;
+  animation: fade-in 0.4s ease;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.game-hud {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 22px;
+  margin-bottom: 20px;
+}
+
+.hud-stats {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.hud-stat {
+  text-align: center;
+}
+
+.hud-stat .num {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--deep-sea);
+}
+
+[data-theme="dark"] .hud-stat .num {
+  color: var(--foam);
+}
+
+.hud-stat .lbl {
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+}
+
+.hud-progress {
+  flex: 1;
+  min-width: 160px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+[data-theme="dark"] .hud-progress {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.hud-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--seagrass), var(--lagoon));
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+.hud-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.game-stage {
+  padding: 26px;
+  min-height: 440px;
+  position: relative;
+  overflow: hidden;
+}
+
+.game-instructions {
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+  margin-bottom: 16px;
+}
+
+.game-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(11, 61, 66, 0.82);
+  color: var(--foam);
+  text-align: center;
+  gap: 14px;
+  padding: 20px;
+  border-radius: var(--radius-lg);
+}
+
+.game-overlay h3 {
+  font-size: 1.6rem;
+}
+
+.game-overlay p {
+  color: rgba(250, 253, 251, 0.85);
+}
+
+/* ---- Game 1: Planting ---- */
+.g1-zone {
+  position: relative;
+  height: 380px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(180deg, #56C2C9, #A9925F);
+  overflow: hidden;
+}
+
+.g1-slot {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px dashed rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+}
+
+.g1-slot.filled {
+  border-style: solid;
+}
+
+.g1-tray {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.g1-seed {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(46, 125, 91, 0.15);
+  border: 2px dashed var(--seagrass);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: grab;
+}
+
+/* ---- Game 2: Memory ---- */
+.g2-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+.g2-card {
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--seagrass), var(--lagoon));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease;
+  color: transparent;
+}
+
+.g2-card.flipped,
+.g2-card.matched {
+  background: var(--foam);
+  color: var(--ink);
+  box-shadow: var(--shadow-soft);
+}
+
+.g2-card.matched {
+  opacity: 0.55;
+  cursor: default;
+}
+
+/* ---- Game 3: Trash collection ---- */
+.g3-stage {
+  position: relative;
+  height: 400px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(180deg, #7FD4D9, #2E97A0);
+  overflow: hidden;
+}
+
+.g3-item {
+  position: absolute;
+  font-size: 1.8rem;
+  cursor: grab;
+  animation: sink linear forwards;
+}
+
+@keyframes sink {
+  from {
+    transform: translateY(-40px);
+  }
+
+  to {
+    transform: translateY(420px);
+  }
+}
+
+.g3-bin {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 70px;
+  border-radius: 12px 12px 4px 4px;
+  background: rgba(255, 255, 255, 0.25);
+  border: 2px dashed var(--foam);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.g3-combo {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+}
+
+/* ---- Game 4: Dugong feeding ---- */
+.g4-stage {
+  position: relative;
+  height: 400px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(180deg, #3FBAC2, #0F4E52);
+  overflow: hidden;
+  outline: none;
+}
+
+.g4-dugong {
+  position: absolute;
+  font-size: 2.4rem;
+  transition: left 0.12s linear, top 0.12s linear;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+.g4-item {
+  position: absolute;
+  font-size: 1.6rem;
+}
+
+.g4-hint {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  text-align: center;
+  color: var(--foam);
+  font-size: 0.78rem;
+  opacity: 0.8;
+}
+
+/* ---- Game 5: Puzzle ---- */
+.g5-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  max-width: 360px;
+  margin: 0 auto;
+  aspect-ratio: 1;
+}
+
+.g5-tile {
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--seagrass), var(--lagoon));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--foam);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.g5-tile.blank {
+  background: transparent;
+  cursor: default;
+}
+
+.g5-tile:hover:not(.blank) {
+  transform: scale(0.96);
+}
+
+@media (max-width: 700px) {
+  .g2-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .g1-zone,
+  .g3-stage,
+  .g4-stage {
+    height: 320px;
+  }
+}

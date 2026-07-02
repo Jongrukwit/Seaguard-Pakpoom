@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>แบบทดสอบ — Seaguard</title>
+<link rel="stylesheet" href="css/quiz.css" />
+</head>
+<body class="quiz-body">
+
+<div id="loading-screen">
+  <div class="loading-blade-wrap">
+    <div class="blade" style="height:40px"></div><div class="blade" style="height:65px"></div>
+    <div class="blade" style="height:50px"></div><div class="blade" style="height:70px"></div>
+    <div class="blade" style="height:45px"></div>
+  </div>
+  <p class="loading-text">กำลังเตรียมคำถาม...</p>
+</div>
+
+<header class="site-nav">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="20" fill="#2E7D5B"/><path d="M12 28C12 20 14 12 20 8C26 12 28 20 28 28" stroke="#9FE3E6" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <span>Seaguard</span>
+    </a>
+    <nav class="nav-links">
+      <a href="dashboard.html">แดชบอร์ด</a>
+      <a href="learning.html">เรียนรู้</a>
+      <a href="game.html">เกม</a>
+      <a href="quiz.html" class="active">แบบทดสอบ</a>
+      <a href="#" id="logout-btn">ออกจากระบบ</a>
+    </nav>
+    <div class="nav-tools">
+      <button class="icon-toggle" id="theme-toggle">🌙</button>
+      <button class="icon-toggle nav-burger" id="nav-burger">☰</button>
+    </div>
+  </div>
+</header>
+
+<main class="quiz-shell">
+  <div class="quiz-head">
+    <span class="eyebrow">วัดความเข้าใจ</span>
+    <h1 class="section-title">แบบทดสอบเรื่องหญ้าทะเล</h1>
+    <p class="section-sub" style="margin-left:auto;margin-right:auto">คำถาม 20 ข้อ สุ่มลำดับทุกครั้งที่เริ่มทำ พร้อมเฉลยและคำอธิบาย</p>
+  </div>
+
+  <div class="quiz-progress-wrap" id="quiz-progress-wrap">
+    <div class="quiz-progress-track"><div class="quiz-progress-fill" id="quiz-progress-fill"></div></div>
+    <span class="quiz-progress-label" id="quiz-progress-label">ข้อ 1 / 20</span>
+  </div>
+
+  <div class="quiz-card glass" id="quiz-card">
+    <p class="quiz-question" id="quiz-question"></p>
+    <div class="quiz-options" id="quiz-options"></div>
+    <p class="quiz-explain" id="quiz-explain"></p>
+    <div class="quiz-actions">
+      <button class="btn btn-primary" id="quiz-next-btn" style="display:none">ข้อถัดไป →</button>
+    </div>
+  </div>
+
+  <div class="quiz-result glass" id="quiz-result" style="display:none">
+    <span class="eyebrow">สรุปผล</span>
+    <h2 class="section-title">ทำแบบทดสอบเสร็จแล้ว!</h2>
+    <div class="big-score" id="quiz-result-score">0/20</div>
+    <div class="quiz-result-stats">
+      <div><div class="num" id="quiz-result-pct">0%</div><div class="lbl">เปอร์เซ็นต์ความถูกต้อง</div></div>
+      <div><div class="num" id="quiz-result-time">0s</div><div class="lbl">เวลาที่ใช้</div></div>
+    </div>
+    <div class="quiz-result-actions">
+      <button class="btn btn-primary" id="quiz-restart-btn">🔁 ทำอีกครั้ง</button>
+      <a href="dashboard.html" class="btn btn-ghost">ไปที่แดชบอร์ด</a>
+    </div>
+  </div>
+</main>
+
+<footer class="meadow-footer">
+  <div class="container meadow-footer-grid">
+    <div><h4>Seaguard</h4><p>แพลตฟอร์มเรียนรู้เรื่องหญ้าทะเลสำหรับทุกวัย</p></div>
+    <div><h4>เมนู</h4><ul><li><a href="learning.html">เรียนรู้</a></li><li><a href="game.html">เกม</a></li></ul></div>
+    <div><h4>บัญชี</h4><ul><li><a href="dashboard.html">แดชบอร์ด</a></li></ul></div>
+  </div>
+  <div class="blade-row" aria-hidden="true"></div>
+  <div class="container bottom"><span>© 2026 Seaguard</span><span>สร้างด้วย 💙 นักเรียนโรงเรียนวิเชียรมาตุ</span></div>
+</footer>
+
+<div id="toast-stack"></div>
+<script src="js/main.js"></script>
+<script src="js/quiz.js"></script>
+</body>
+</html>
