@@ -35,7 +35,7 @@
    ]
    ----------------------------------------------------------------------- */
 
-const SHEET_URL = "https://docs.google.com/spreadsheets/d/170ElS1ghO1MNj5YsVPBqdBpsoCJGUI8GSr7opwFiPnk/edit?gid=0#gid=0"; // PUT_YOUR_GOOGLE_APPS_SCRIPT_URL — leave blank to use mock data
+const SHEET_URL = "https://docs.google.com/spreadsheets/d/170ElS1ghO1MNj5YsVPBqdBpsoCJGUI8GSr7opwFiPnk/edit?pli=1&gid=0#gid=0"; // PUT_YOUR_GOOGLE_APPS_SCRIPT_URL — leave blank to use mock data
 
 // ช่วงค่าที่เหมาะสมต่อการเจริญเติบโตของหญ้าทะเล ใช้ตัดสิน "สถานะ" ของค่าปัจจุบัน
 const IDEAL_RANGE = {
