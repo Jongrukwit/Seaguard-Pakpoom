@@ -1,170 +1,261 @@
 <!DOCTYPE html>
 <html lang="th" data-theme="light">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>เรียนรู้ — Seaguard</title>
-<link rel="stylesheet" href="css/learning.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>เรียนรู้ — Seagrass Explorer</title>
+  <link rel="stylesheet" href="css/learning.css" />
 </head>
+
 <body class="learning-body">
 
-<div id="loading-screen">
-  <div class="loading-blade-wrap">
-    <div class="blade" style="height:40px"></div><div class="blade" style="height:65px"></div>
-    <div class="blade" style="height:50px"></div><div class="blade" style="height:70px"></div>
-    <div class="blade" style="height:45px"></div>
+  <div id="loading-screen">
+    <div class="loading-blade-wrap">
+      <div class="blade" style="height:40px"></div>
+      <div class="blade" style="height:65px"></div>
+      <div class="blade" style="height:50px"></div>
+      <div class="blade" style="height:70px"></div>
+      <div class="blade" style="height:45px"></div>
+    </div>
+    <p class="loading-text">กำลังโหลดโลกใต้ทะเล...</p>
   </div>
-  <p class="loading-text">กำลังโหลดโลกใต้ทะเล...</p>
-</div>
 
-<header class="site-nav">
-  <div class="container">
-    <a href="index.html" class="brand">
-      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="20" fill="#2E7D5B"/><path d="M12 28C12 20 14 12 20 8C26 12 28 20 28 28" stroke="#9FE3E6" stroke-width="2.5" stroke-linecap="round"/></svg>
-      <span>Seaguard</span>
-    </a>
-    <nav class="nav-links">
-      <a href="dashboard.html">แดชบอร์ด</a>
-      <a href="learning.html" class="active">เรียนรู้</a>
-      <a href="game.html">เกม</a>
-      <a href="quiz.html">แบบทดสอบ</a>
-      <a href="#" id="logout-btn">ออกจากระบบ</a>
-    </nav>
-    <div class="nav-tools">
-      <button class="icon-toggle" id="lang-toggle">TH</button>
-      <button class="icon-toggle" id="theme-toggle">🌙</button>
-      <button class="icon-toggle nav-burger" id="nav-burger">☰</button>
-    </div>
-  </div>
-</header>
-
-<main>
-  <!-- Hero -->
-  <section class="learn-hero">
-    <div class="sun-glow" aria-hidden="true"></div>
-    <div class="hero-parallax-layer" id="hero-blades" aria-hidden="true"></div>
-    <div class="hero-parallax-layer" id="hero-bubbles" aria-hidden="true"></div>
-    <div class="hero-parallax-layer" id="hero-fish" aria-hidden="true"></div>
-    <div class="learn-hero-content">
-      <span class="eyebrow">พิพิธภัณฑ์แห่งท้องทะเล</span>
-      <h1>ดำดิ่งสู่โลกของหญ้าทะเล</h1>
-      <p>เลื่อนลงเพื่อสำรวจ ตั้งแต่ผิวน้ำที่แสงแดดส่องถึง ไปจนถึงพื้นทะเลที่หญ้าทะเลเติบโต</p>
-    </div>
-    <div class="scroll-cue" aria-hidden="true">⌄</div>
-  </section>
-
-  <!-- Basics -->
-  <section class="learn-section container">
-    <span class="eyebrow">ความรู้พื้นฐาน</span>
-    <h2 class="section-title">หญ้าทะเลคืออะไร</h2>
-    <p class="section-sub">ทำความรู้จักพืชใต้น้ำที่หลายคนมองข้าม แต่เป็นรากฐานสำคัญของท้องทะเล</p>
-    <div class="basics-grid">
-      <div class="basic-card glass reveal">
-        <div><img class="real-img" src="assets/images/SeaGrass.jpg" alt=""></div>
-        <h3>หญ้าทะเลคืออะไร</h3>
-        <p>พืชดอกใต้ทะเลชนิดเดียวที่ปรับตัวให้เจริญเติบโตในน้ำเค็มได้เต็มรูปแบบ ต่างจากสาหร่ายซึ่งไม่ใช่พืชดอก</p>
-      </div>
-      <div class="basic-card glass reveal">
-        <div><img class="real-img" src="assets/images/Map.png" alt=""></div>
-        <h3>พบที่ไหน</h3>
-        <p>พบตามชายฝั่งทะเลตื้นทั่วโลก รวมถึงชายฝั่งอันดามันและอ่าวไทยของประเทศไทย</p>
-      </div>
-      <div class="basic-card glass reveal">
-        <div ><img class="real-img" src="assets/images/SeaGrass2.jpg" alt=""></div>
-        <h3>มีกี่ชนิด</h3>
-        <p>ทั่วโลกมีหญ้าทะเลประมาณ 60 ชนิด ในน่านน้ำไทยพบแล้วอย่างน้อย 13 ชนิด</p>
-      </div>
-      <div class="basic-card glass reveal">
-        <div><img class="real-img" src="assets/images/ecosystem.jpg" alt=""></div>
-        <h3>ความสำคัญ</h3>
-        <p>เป็นแหล่งอาหารของพะยูนและเต่าทะเล แหล่งอนุบาลสัตว์น้ำวัยอ่อน และช่วยดักจับคาร์บอนใต้ทะเล</p>
+  <header class="site-nav">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="20" fill="#2E7D5B" />
+          <path d="M12 28C12 20 14 12 20 8C26 12 28 20 28 28" stroke="#9FE3E6" stroke-width="2.5"
+            stroke-linecap="round" />
+        </svg>
+        <span>Seagrass Explorer</span>
+      </a>
+      <nav class="nav-links">
+        <a href="dashboard.html">แดชบอร์ด</a>
+        <a href="learning.html" class="active">เรียนรู้</a>
+        <a href="game.html">เกม</a>
+        <a href="quiz.html">แบบทดสอบ</a>
+        <a href="#" id="logout-btn">ออกจากระบบ</a>
+      </nav>
+      <div class="nav-tools">
+        <button class="icon-toggle" id="lang-toggle">TH</button>
+        <button class="icon-toggle" id="theme-toggle">🌙</button>
+        <button class="icon-toggle nav-burger" id="nav-burger">☰</button>
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- Ecosystem -->
-  <section class="learn-section alt container">
-    <span class="eyebrow">ระบบนิเวศ</span>
-    <h2 class="section-title">ใครอาศัยอยู่ในทุ่งหญ้าทะเล</h2>
-    <p class="section-sub">เลื่อนเมาส์ (หรือแตะบนมือถือ) ไปที่สัตว์แต่ละตัวเพื่อดูข้อมูล</p>
-    <div class="ecosystem-stage" id="ecosystem-stage"></div>
-  </section>
-
-  <!-- Drag & drop planting -->
-  <section class="learn-section container">
-    <span class="eyebrow">ลงมือปลูก</span>
-    <h2 class="section-title">ลากต้นกล้าไปปลูกในจุดที่เหมาะสม</h2>
-    <p class="section-sub">ลากกล้าหญ้าทะเล 🌱 จากถาดไปวางบนพื้นทรายหรือดินโคลนใต้ทะเล หลีกเลี่ยงโซนหินและน้ำลึก</p>
-    <div class="plant-lab">
-      <div class="plant-tray glass">
-        <h4>ถาดต้นกล้า</h4>
-        <div id="seedling-tray" style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center"></div>
-        <p style="font-size:0.8rem;color:var(--ink-soft);text-align:center">ลากแต่ละต้นไปวางบนพื้นที่มีขอบเส้นประ</p>
+  <main>
+    <!-- Hero -->
+    <section class="learn-hero">
+      <div class="sun-glow" aria-hidden="true"></div>
+      <div class="hero-parallax-layer" id="hero-blades" aria-hidden="true"></div>
+      <div class="hero-parallax-layer" id="hero-bubbles" aria-hidden="true"></div>
+      <div class="hero-parallax-layer" id="hero-fish" aria-hidden="true"></div>
+      <div class="learn-hero-content">
+        <span class="eyebrow">พิพิธภัณฑ์แห่งท้องทะเล</span>
+        <h1>ดำดิ่งสู่โลกของหญ้าทะเล</h1>
+        <p>เลื่อนลงเพื่อสำรวจ ตั้งแต่ผิวน้ำที่แสงแดดส่องถึง ไปจนถึงพื้นทะเลที่หญ้าทะเลเติบโต</p>
       </div>
-      <div class="plant-zone" id="plant-zone">
-        <span class="badge plant-score-badge" id="plant-score-badge">🌱 คะแนน: 0</span>
-      </div>
-    </div>
-  </section>
+      <div class="scroll-cue" aria-hidden="true">⌄</div>
+    </section>
 
-  <!-- Water quality simulation -->
-  <section class="learn-section alt container">
-    <span class="eyebrow">การจำลอง</span>
-    <h2 class="section-title">คุณภาพน้ำส่งผลต่อหญ้าทะเลอย่างไร</h2>
-    <p class="section-sub">ปรับตัวแปรด้านล่างแล้วดูการเปลี่ยนแปลงของหญ้าทะเลแบบเรียลไทม์</p>
-    <div class="sim-layout">
-      <div class="sim-controls glass">
-        <div class="sim-slider-group">
-          <label>ความเค็ม (ppt) <span id="sim-salinity-val">35</span></label>
-          <input type="range" id="sim-salinity" min="0" max="60" value="35" />
+    <!-- Basics -->
+    <section class="learn-section container">
+      <span class="eyebrow">ความรู้พื้นฐาน</span>
+      <h2 class="section-title">หญ้าทะเลคืออะไร</h2>
+      <p class="section-sub">ทำความรู้จักพืชใต้น้ำที่หลายคนมองข้าม แต่เป็นรากฐานสำคัญของท้องทะเล</p>
+      <div class="basics-grid">
+        <div class="basic-card glass reveal">
+          <div><img class="real-img" src="assets/images/SeaGrass.jpg" alt=""></div>
+          <h3>หญ้าทะเลคืออะไร</h3>
+          <p>พืชดอกใต้ทะเลชนิดเดียวที่ปรับตัวให้เจริญเติบโตในน้ำเค็มได้เต็มรูปแบบ ต่างจากสาหร่ายซึ่งไม่ใช่พืชดอก</p>
         </div>
-        <div class="sim-slider-group">
-          <label>แสงแดด <span id="sim-light-val">80%</span></label>
-          <input type="range" id="sim-light" min="0" max="100" value="80" />
+        <div class="basic-card glass reveal">
+          <div><img class="real-img" src="assets/images/Map.png" alt=""></div>
+          <h3>พบที่ไหน</h3>
+          <p>พบตามชายฝั่งทะเลตื้นทั่วโลก รวมถึงชายฝั่งอันดามันและอ่าวไทยของประเทศไทย</p>
         </div>
-        <div class="sim-slider-group">
-          <label>อุณหภูมิ (°C) <span id="sim-temp-val">27°C</span></label>
-          <input type="range" id="sim-temp" min="10" max="40" value="27" />
+        <div class="basic-card glass reveal">
+          <div><img class="real-img" src="assets/images/SeaGrass2.jpg" alt=""></div>
+          <h3>มีกี่ชนิด</h3>
+          <p>ทั่วโลกมีหญ้าทะเลประมาณ 60 ชนิด ในน่านน้ำไทยพบแล้วอย่างน้อย 13 ชนิด</p>
         </div>
-        <div class="sim-slider-group">
-          <label>คุณภาพน้ำโดยรวม <span id="sim-quality-val">80%</span></label>
-          <input type="range" id="sim-quality" min="0" max="100" value="80" />
+        <div class="basic-card glass reveal">
+          <div><img class="real-img" src="assets/images/ecosystem.jpg" alt=""></div>
+          <h3>ความสำคัญ</h3>
+          <p>เป็นแหล่งอาหารของพะยูนและเต่าทะเล แหล่งอนุบาลสัตว์น้ำวัยอ่อน และช่วยดักจับคาร์บอนใต้ทะเล</p>
         </div>
       </div>
-      <div class="sim-stage" id="sim-stage">
+    </section>
+
+    <!-- Ecosystem -->
+    <section class="learn-section alt container">
+      <span class="eyebrow">ระบบนิเวศ</span>
+      <h2 class="section-title">ใครอาศัยอยู่ในทุ่งหญ้าทะเล</h2>
+      <p class="section-sub">เลื่อนเมาส์ (หรือแตะบนมือถือ) ไปที่สัตว์แต่ละตัวเพื่อดูข้อมูล</p>
+      <div class="ecosystem-stage" id="ecosystem-stage"></div>
+    </section>
+
+    <!-- Pre-cultivation planning -->
+    <section class="learn-section container">
+      <span class="eyebrow">ก่อนลงมือปลูก</span>
+      <h2 class="section-title">การวางแผนก่อนการเพาะเลี้ยง</h2>
+      <p class="section-sub">ก่อนเริ่มปลูกหญ้าทะเลจริง ควรวางแผน 3 ขั้นตอนนี้ให้ครบก่อน</p>
+      <div class="plan-steps">
+        <div class="plan-step glass reveal">
+          <div class="step-num">1</div>
+          <h3>หาจำนวนของหญ้าทะเลที่ต้องการจะเพาะปลูก</h3>
+          <p>ประเมินขนาดพื้นที่และจำนวนต้นกล้าที่ต้องใช้ให้เหมาะสมกับพื้นที่ฟื้นฟู</p>
+          <span class="plan-step-arrow">➜</span>
+        </div>
+        <div class="plan-step glass reveal">
+          <div class="step-num">2</div>
+          <h3>หาแหล่งหรือสถานที่ที่เหมาะสมต่อการเพาะปลูก</h3>
+          <p>เลือกพื้นที่ที่มีพื้นท้องทะเลและคุณภาพน้ำเหมาะสม ตามที่อธิบายในหัวข้อถัดไป</p>
+          <span class="plan-step-arrow">➜</span>
+        </div>
+        <div class="plan-step glass reveal">
+          <div class="step-num">3</div>
+          <h3>เตรียมคุณภาพน้ำให้เหมาะสมสำหรับการปลูกหญ้าทะเล</h3>
+          <p>ตรวจวัดและปรับคุณภาพน้ำให้ตรงตามมาตรฐานในคู่มือ ก่อนนำต้นกล้าลงปลูก</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seedling preparation -->
+    <section class="learn-section alt container">
+      <span class="eyebrow">เตรียมต้นกล้า</span>
+      <h2 class="section-title">การเตรียมต้นกล้าหญ้าทะเลที่พร้อมปลูก</h2>
+      <p class="section-sub">ต้นกล้าที่นำมาเพาะปลูกต้องมีลักษณะสมบูรณ์และแข็งแรงตามเกณฑ์นี้</p>
+      <div class="spec-card glass reveal">
+        <div class="spec-list">
+          <div class="spec-row"><span class="k">📏 ความยาวของใบ</span><span class="v">4 เซนติเมตร</span></div>
+          <div class="spec-row"><span class="k">📐 ความกว้างของใบ</span><span class="v">1–1.5 เซนติเมตร</span></div>
+          <div class="spec-row"><span class="k">🎨 สีของใบ</span><span class="v">สีเขียว</span></div>
+          <div class="spec-row"><span class="k">🌿 จำนวนใบ</span><span class="v">2–3 ใบ</span></div>
+          <div class="spec-row"><span class="k">💪 ลักษณะต้นกล้า</span><span class="v">สมบูรณ์และแข็งแรง</span></div>
+        </div>
+        <p class="spec-note">ต้นกล้าที่ไม่ตรงตามเกณฑ์ข้างต้น เช่น ใบเหลือง ใบช้ำ หรือลำต้นเหี่ยว ไม่ควรนำไปปลูก
+          เพราะมีโอกาสรอดต่ำ</p>
+      </div>
+    </section>
+
+    <!-- Drag & drop planting -->
+    <section class="learn-section container">
+      <span class="eyebrow">ลงมือปลูก</span>
+      <h2 class="section-title">ลากต้นกล้าไปปลูกในจุดที่เหมาะสม</h2>
+      <p class="section-sub">หญ้าทะเลปลูกได้เฉพาะบนพื้นท้องทะเลบางประเภทเท่านั้น
+        ลองลากต้นกล้าไปวางดูว่าจุดไหนปลูกได้จริง</p>
+      <div class="substrate-legend">
+        <span class="substrate-chip good">✅ ทรายปนโคลน</span>
+        <span class="substrate-chip good">✅ โคลนปนทราย</span>
+        <span class="substrate-chip good">✅ ทรายปนปะการัง</span>
+        <span class="substrate-chip bad">❌ ทรายล้วน</span>
+        <span class="substrate-chip bad">❌ โคลนล้วน</span>
+        <span class="substrate-chip bad">❌ หิน / น้ำลึก</span>
+      </div>
+      <div class="plant-lab">
+        <div class="plant-tray glass">
+          <h4>ถาดต้นกล้า</h4>
+          <div id="seedling-tray" style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center"></div>
+          <p style="font-size:0.8rem;color:var(--ink-soft);text-align:center">ลากแต่ละต้นไปวางบนพื้นที่มีขอบเส้นประ
+            แล้วดูป้ายชื่อพื้นท้องทะเลใต้จุดนั้น</p>
+        </div>
+        <div class="plant-zone" id="plant-zone">
+          <span class="badge plant-score-badge" id="plant-score-badge">🌱 คะแนน: 0</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Water quality standard + simulation -->
+    <section class="learn-section alt container">
+      <span class="eyebrow">คุณภาพน้ำ</span>
+      <h2 class="section-title">การเตรียมคุณภาพน้ำให้ได้มาตรฐาน</h2>
+      <p class="section-sub">การเตรียมน้ำให้มีคุณภาพตามมาตรฐาน จะต้องเตรียมคุณภาพของน้ำให้เป็นดังนี้</p>
+
+      <div class="spec-grid-2">
+        <div class="spec-card glass reveal">
+          <div class="spec-list">
+            <div class="spec-row"><span class="k">🌡️ อุณหภูมิของน้ำ</span><span class="v">27–35 °C</span></div>
+            <div class="spec-row"><span class="k">🧪 ค่าความเป็นกรด-เบส (pH)</span><span class="v">7.5–8.55</span></div>
+            <div class="spec-row"><span class="k">🌊 ความเค็มของน้ำ</span><span class="v">5–30 ppt (ส่วนต่อพัน)</span>
+            </div>
+          </div>
+          <p class="spec-note">ควรตรวจวัดค่าทั้ง 3 นี้ก่อนนำต้นกล้าลงปลูกทุกครั้ง หากค่าใดค่าหนึ่งอยู่นอกช่วงนี้
+            ควรปรับสภาพน้ำก่อน เพื่อเพิ่มโอกาสรอดของหญ้าทะเล</p>
+        </div>
+
+        <div class="sim-controls glass reveal">
+          <h3 style="font-size:1rem;margin-bottom:4px;color:var(--deep-sea)">ทดลองปรับค่าเอง</h3>
+          <p style="font-size:0.82rem;color:var(--ink-soft);margin-bottom:16px">ลองปรับค่าด้านล่าง
+            แล้วดูการเปลี่ยนแปลงของหญ้าทะเลทางขวา</p>
+          <div class="sim-slider-group">
+            <label>อุณหภูมิของน้ำ (°C) <span id="sim-temp-val">30</span></label>
+            <input type="range" id="sim-temp" min="15" max="42" value="30" />
+          </div>
+          <div class="sim-slider-group">
+            <label>ค่า pH <span id="sim-ph-val">8.0</span></label>
+            <input type="range" id="sim-ph" min="5" max="9.5" step="0.05" value="8.0" />
+          </div>
+          <div class="sim-slider-group">
+            <label>ความเค็ม (ppt) <span id="sim-salinity-val">18</span></label>
+            <input type="range" id="sim-salinity" min="0" max="45" value="18" />
+          </div>
+        </div>
+      </div>
+
+      <div class="sim-stage" id="sim-stage" style="margin-top:20px">
         <div class="sim-plant" id="sim-plant">🌿</div>
         <div class="sim-status" id="sim-status"></div>
       </div>
+    </section>
+
+    <!-- Before / After -->
+    <section class="learn-section container">
+      <span class="eyebrow">ก่อน และ หลัง</span>
+      <h2 class="section-title">ทะเลที่มีหญ้าทะเล เทียบกับทะเลที่ไม่มี</h2>
+      <p class="section-sub">ลากแถบตรงกลางเพื่อเปรียบเทียบความแตกต่าง</p>
+      <div class="compare-wrap" id="compare-wrap">
+        <div class="compare-img compare-before"><img src="assets/images/Verybadecosystem.jpg" alt=""></div>
+        <div class="compare-img compare-after" id="compare-after"><img src="assets/images/Goodecosystem.jpg" alt="">
+        </div>
+        <span class="compare-label left">ไม่มีหญ้าทะเล</span>
+        <span class="compare-label right">มีหญ้าทะเล</span>
+        <div class="compare-handle" id="compare-handle"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="meadow-footer">
+    <div class="container meadow-footer-grid">
+      <div>
+        <h4>Seagrass Explorer</h4>
+        <p>แพลตฟอร์มเรียนรู้เรื่องหญ้าทะเลสำหรับทุกวัย</p>
+      </div>
+      <div>
+        <h4>เมนู</h4>
+        <ul>
+          <li><a href="game.html">เกม</a></li>
+          <li><a href="quiz.html">แบบทดสอบ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>บัญชี</h4>
+        <ul>
+          <li><a href="dashboard.html">แดชบอร์ด</a></li>
+        </ul>
+      </div>
     </div>
-  </section>
-
-  <!-- Before / After -->
-  <section class="learn-section container">
-    <span class="eyebrow">ก่อน และ หลัง</span>
-    <h2 class="section-title">ทะเลที่มีหญ้าทะเล เทียบกับทะเลที่ไม่มี</h2>
-    <p class="section-sub">ลากแถบตรงกลางเพื่อเปรียบเทียบความแตกต่าง</p>
-    <div class="compare-wrap" id="compare-wrap">
-      <div class="compare-img compare-before"><img src="assets/images/Badecosystem.jpg" alt=""></div>
-      <div class="compare-img compare-after" id="compare-after"><img src="assets/images/Goodecosystem.jpg" alt=""></div>
-      <span class="compare-label left">ไม่มีหญ้าทะเล</span>
-      <span class="compare-label right">มีหญ้าทะเล</span>
-      <div class="compare-handle" id="compare-handle"></div>
+    <div class="blade-row" aria-hidden="true"></div>
+    <div class="container bottom"><span>© 2026 Seaguard</span><span>สร้างด้วย 💙 นักเรียนโรงเรียนวิเชียรมาตุ</span>
     </div>
-  </section>
-</main>
+  </footer>
 
-<footer class="meadow-footer">
-  <div class="container meadow-footer-grid">
-    <div><h4>Seaguard</h4><p>แพลตฟอร์มเรียนรู้เรื่องหญ้าทะเลสำหรับทุกวัย</p></div>
-    <div><h4>เมนู</h4><ul><li><a href="game.html">เกม</a></li><li><a href="quiz.html">แบบทดสอบ</a></li></ul></div>
-    <div><h4>บัญชี</h4><ul><li><a href="dashboard.html">แดชบอร์ด</a></li></ul></div>
-  </div>
-  <div class="blade-row" aria-hidden="true"></div>
-  <div class="container bottom"><span>© 2026 Seaguard</span><span>สร้างด้วย 💙 นักเรียนโรงเรียนวิเชียรมาตุ</span></div>
-</footer>
-
-<div id="toast-stack"></div>
-<script src="js/main.js"></script>
-<script src="js/learning.js"></script>
+  <div id="toast-stack"></div>
+  <script src="js/main.js"></script>
+  <script src="js/learning.js"></script>
 </body>
+
 </html>

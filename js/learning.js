@@ -84,14 +84,21 @@ function buildEcosystem() {
 
 /* -----------------------------------------------------------------------
    3. DRAG & DROP PLANTING EXPERIENCE
+   -----------------------------------------------------------------------
+   หญ้าทะเลปลูกได้เฉพาะบนพื้นท้องทะเล 3 ประเภทนี้เท่านั้น:
+     - ทรายปนโคลน
+     - โคลนปนทราย
+     - ทรายปนปะการัง
+   ส่วนทรายล้วน โคลนล้วน หรือหิน/น้ำลึก ปลูกไม่ได้
    ----------------------------------------------------------------------- */
 const PLANT_SLOTS = [
-  { top: '20%', left: '30%', correct: true },
-  { top: '30%', left: '55%', correct: true },
-  { top: '45%', left: '15%', correct: true },
-  { top: '15%', left: '75%', correct: false }, // in the deep sea zone — wrong
-  { top: '55%', left: '68%', correct: true },
-  { top: '35%', left: '85%', correct: false }, // on rock — wrong
+  { top: '40%', left: '30%', substrate: 'ทรายปนโคลน', good: true },
+  { top: '45%', left: '55%', substrate: 'โคลนปนทราย', good: true },
+  { top: '55%', left: '15%', substrate: 'ทรายปนปะการัง', good: true },
+  { top: '52%', left: '40%', substrate: 'ทรายล้วน', good: false },
+  { top: '32%', left: '75%', substrate: 'หิน / น้ำลึก', good: false },
+  { top: '55%', left: '68%', substrate: 'ทรายปนปะการัง', good: true },
+  { top: '47%', left: '85%', substrate: 'โคลนล้วน', good: false },
 ];
 
 let plantScore = 0;
@@ -103,11 +110,12 @@ function buildPlantLab() {
 
   PLANT_SLOTS.forEach((slot, i) => {
     const el = document.createElement('div');
-    el.className = 'plant-slot' + (slot.correct ? ' correct-zone' : '');
+    el.className = 'plant-slot' + (slot.good ? ' correct-zone' : '');
     el.style.top = slot.top;
     el.style.left = slot.left;
-    el.dataset.correct = slot.correct;
+    el.dataset.correct = slot.good;
     el.dataset.index = i;
+    el.innerHTML = `<span class="plant-slot-label">${slot.substrate}</span>`;
     el.addEventListener('dragover', e => e.preventDefault());
     el.addEventListener('drop', onDropSeedling);
     zone.appendChild(el);
@@ -136,17 +144,20 @@ function onDropSeedling(e) {
   const seedId = e.dataTransfer.getData('text/plain');
   const seedEl = document.getElementById(seedId);
   const isCorrect = slotEl.dataset.correct === 'true';
+  const substrate = PLANT_SLOTS[Number(slotEl.dataset.index)].substrate;
+  const label = slotEl.querySelector('.plant-slot-label');
 
   if (isCorrect) {
     slotEl.classList.add('filled');
     slotEl.innerHTML = '<span class="grown-icon">🌿</span>';
+    if (label) slotEl.appendChild(label);
     plantScore += 10;
     spawnFishNear(slotEl);
-    showToastSafe('ปลูกสำเร็จ! ได้ +10 คะแนน', 'success');
+    showToastSafe(`ปลูกสำเร็จบน "${substrate}"! ได้ +10 คะแนน`, 'success');
   } else {
     slotEl.classList.add('wrong-shake');
     setTimeout(() => slotEl.classList.remove('wrong-shake'), 400);
-    showToastSafe('จุดนี้ไม่เหมาะกับการปลูกหญ้าทะเล ลองจุดอื่นดูนะ', 'error');
+    showToastSafe(`"${substrate}" ไม่ใช่พื้นที่ที่ปลูกหญ้าทะเลได้ ลองจุดอื่นดูนะ`, 'error');
   }
   if (seedEl) seedEl.style.visibility = isCorrect ? 'hidden' : 'visible';
   updatePlantScoreBadge();
@@ -173,37 +184,53 @@ function showToastSafe(msg, type) {
 
 /* -----------------------------------------------------------------------
    4. WATER QUALITY SIMULATION
+   -----------------------------------------------------------------------
+   มาตรฐานคุณภาพน้ำสำหรับปลูกหญ้าทะเล:
+     - อุณหภูมิของน้ำ: 27-35 องศาเซลเซียส
+     - ค่าความเป็นกรด-เบส (pH): 7.5-8.55
+     - ความเค็มของน้ำ: 5-30 ppt (ส่วนต่อพัน)
    ----------------------------------------------------------------------- */
+const WATER_STANDARD = {
+  temp: { min: 27, max: 35 },
+  ph: { min: 7.5, max: 8.55 },
+  salinity: { min: 5, max: 30 },
+};
+
 function initWaterSimulation() {
-  const salinity = document.getElementById('sim-salinity');
-  const light = document.getElementById('sim-light');
   const temp = document.getElementById('sim-temp');
-  const quality = document.getElementById('sim-quality');
+  const ph = document.getElementById('sim-ph');
+  const salinity = document.getElementById('sim-salinity');
   const plant = document.getElementById('sim-plant');
   const status = document.getElementById('sim-status');
   const stage = document.getElementById('sim-stage');
-  if (!salinity || !plant) return;
+  if (!temp || !ph || !salinity || !plant) return;
+
+  // ให้คะแนน 0-100 ต่อค่าหนึ่งตัว ตามว่าอยู่ในช่วงมาตรฐานหรือไม่ และห่างจากช่วงแค่ไหน
+  function scoreAgainstRange(value, range) {
+    if (value >= range.min && value <= range.max) return 100;
+    const span = range.max - range.min;
+    const distance = value < range.min ? range.min - value : value - range.max;
+    return Math.max(0, 100 - (distance / span) * 100);
+  }
 
   function update() {
-    const s = Number(salinity.value);
-    const l = Number(light.value);
     const t = Number(temp.value);
-    const q = Number(quality.value);
+    const p = Number(ph.value);
+    const s = Number(salinity.value);
 
+    document.getElementById('sim-temp-val').textContent = t;
+    document.getElementById('sim-ph-val').textContent = p.toFixed(2);
     document.getElementById('sim-salinity-val').textContent = s;
-    document.getElementById('sim-light-val').textContent = `${l}%`;
-    document.getElementById('sim-temp-val').textContent = `${t}°C`;
-    document.getElementById('sim-quality-val').textContent = `${q}%`;
 
-    // Composite health score, 0-100, roughly modeled on real seagrass needs
-    const idealSalinity = 100 - Math.abs(s - 35) * 3;   // ideal ~35 ppt
-    const idealTemp = 100 - Math.abs(t - 27) * 4;        // ideal ~27°C
-    const health = Math.max(0, Math.min(100, (idealSalinity + idealTemp + l + q) / 4));
+    const tempScore = scoreAgainstRange(t, WATER_STANDARD.temp);
+    const phScore = scoreAgainstRange(p, WATER_STANDARD.ph);
+    const salinityScore = scoreAgainstRange(s, WATER_STANDARD.salinity);
+    const health = (tempScore + phScore + salinityScore) / 3;
 
-    let scale = 0.5 + (health / 100) * 0.9;
-    let hue = health < 35 ? 'grayscale(0.7) brightness(0.8)' : health < 65 ? 'saturate(0.7)' : 'saturate(1.2)';
+    const scale = 0.5 + (health / 100) * 0.9;
+    const filterFx = health < 35 ? 'grayscale(0.7) brightness(0.8)' : health < 65 ? 'saturate(0.7)' : 'saturate(1.2)';
     plant.style.transform = `scale(${scale.toFixed(2)})`;
-    plant.style.filter = hue;
+    plant.style.filter = filterFx;
     plant.style.opacity = health < 15 ? 0.35 : 1;
     plant.textContent = health < 15 ? '🥀' : health < 45 ? '🍂' : '🌿';
 
@@ -213,14 +240,23 @@ function initWaterSimulation() {
         ? 'linear-gradient(180deg, #C7D9C4, #8FAE9A)'
         : 'linear-gradient(180deg, #8a8a7a, #5c5c4e)';
 
-    status.textContent = health > 65
-      ? '🌿 หญ้าทะเลเติบโตได้ดีในสภาพน้ำนี้'
-      : health > 35
-        ? '🍂 หญ้าทะเลเริ่มเครียด ควรปรับสภาพน้ำ'
-        : '🥀 สภาพน้ำไม่เหมาะสม หญ้าทะเลกำลังตาย';
+    // แจ้งค่าที่ผิดมาตรฐานให้ชัดเจน พร้อมคำแนะนำสั้นๆ
+    const problems = [];
+    if (t < WATER_STANDARD.temp.min) problems.push('อุณหภูมิต่ำเกินไป — ควรเพิ่มอุณหภูมิให้อยู่ที่ 27-35°C');
+    if (t > WATER_STANDARD.temp.max) problems.push('อุณหภูมิสูงเกินไป — ควรลดอุณหภูมิให้อยู่ที่ 27-35°C');
+    if (p < WATER_STANDARD.ph.min) problems.push('น้ำมีสภาพเป็นกรดเกินไป — ควรปรับ pH ให้อยู่ที่ 7.5-8.55');
+    if (p > WATER_STANDARD.ph.max) problems.push('น้ำมีสภาพเป็นเบสเกินไป — ควรปรับ pH ให้อยู่ที่ 7.5-8.55');
+    if (s < WATER_STANDARD.salinity.min) problems.push('ความเค็มต่ำเกินไป — ควรปรับความเค็มให้อยู่ที่ 5-30 ppt');
+    if (s > WATER_STANDARD.salinity.max) problems.push('ความเค็มสูงเกินไป — ควรปรับความเค็มให้อยู่ที่ 5-30 ppt');
+
+    if (problems.length === 0) {
+      status.textContent = '🌿 คุณภาพน้ำอยู่ในมาตรฐาน หญ้าทะเลเติบโตได้ดี';
+    } else {
+      status.textContent = `⚠️ ${problems.join(' • ')}`;
+    }
   }
 
-  [salinity, light, temp, quality].forEach(input => input.addEventListener('input', update));
+  [temp, ph, salinity].forEach(input => input.addEventListener('input', update));
   update();
 }
 

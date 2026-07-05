@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>แดชบอร์ด — Seaguard</title>
+<title>แดชบอร์ด — Seagrass Explorer</title>
 <link rel="stylesheet" href="css/dashboard.css" />
 </head>
 <body>
@@ -25,7 +25,7 @@
         <circle cx="20" cy="20" r="20" fill="#3FBAC2"/>
         <path d="M12 28C12 20 14 12 20 8C26 12 28 20 28 28" stroke="#0B3D42" stroke-width="2.5" stroke-linecap="round"/>
       </svg>
-      <span>Seaguard</span>
+      <span>Seagrass Explorer</span>
     </a>
     <nav class="side-nav">
       <a href="dashboard.html" class="active"><span class="ic">📊</span> Dashboard</a>
@@ -67,6 +67,21 @@
 
       <section class="stat-grid stat-grid-2col" id="stat-grid" aria-label="ค่าล่าสุดจากเซนเซอร์"></section>
 
+      <!-- Sensor-based health analysis -->
+      <section class="health-card glass reveal">
+        <h3>🩺 การวิเคราะห์สุขภาพหญ้าทะเล (จากข้อมูลเซนเซอร์)</h3>
+        <div id="health-analysis"></div>
+      </section>
+
+      <!-- AI camera scan (Teachable Machine) -->
+      <section class="ai-camera-card glass reveal">
+        <div>
+          <h3>📷 สแกนภาพด้วย AI</h3>
+          <p>เปิดกล้องหรืออัปโหลดรูปหญ้าทะเล เพื่อให้โมเดล AI (Teachable Machine) ช่วยวิเคราะห์สุขภาพจากภาพเพิ่มเติม นอกเหนือจากข้อมูลเซนเซอร์</p>
+        </div>
+        <button class="btn btn-primary" id="open-ai-camera-btn">เปิดกล้อง AI</button>
+      </section>
+
       <section class="chart-grid">
         <div class="chart-card glass reveal">
           <h3>แนวโน้มระดับน้ำ</h3>
@@ -83,8 +98,45 @@
   </div>
 </div>
 
+<!-- AI Camera Modal -->
+<div class="ai-modal-backdrop" id="ai-modal-backdrop">
+  <div class="ai-modal">
+    <div class="ai-modal-head">
+      <h3>📷 สแกนภาพหญ้าทะเลด้วย AI</h3>
+      <button class="ai-modal-close" id="ai-modal-close" aria-label="ปิด">✕</button>
+    </div>
+
+    <div class="ai-camera-view" id="ai-camera-view">
+      <div class="ai-camera-placeholder" id="ai-camera-placeholder">กดปุ่ม "เปิดกล้อง" หรือ "เลือกไฟล์ภาพ" เพื่อเริ่มสแกน</div>
+      <video id="ai-video" autoplay playsinline muted style="display:none"></video>
+      <canvas id="ai-canvas" style="display:none"></canvas>
+      <img id="ai-preview-img" style="display:none" alt="ภาพที่จะวิเคราะห์" />
+    </div>
+
+    <div class="ai-modal-actions">
+      <button class="btn btn-ghost" id="ai-start-camera-btn">🎥 เปิดกล้อง</button>
+      <label class="btn btn-ghost" for="ai-file-input" style="cursor:pointer">🖼️ เลือกไฟล์ภาพ</label>
+      <input type="file" id="ai-file-input" accept="image/*" style="display:none" />
+      <button class="btn btn-coral" id="ai-capture-btn" style="display:none">📸 ถ่ายภาพ</button>
+      <button class="btn btn-primary" id="ai-analyze-btn" style="display:none">🔍 วิเคราะห์ภาพ</button>
+    </div>
+
+    <div class="ai-result" id="ai-result"></div>
+
+    <p class="ai-source-note">
+      โมเดลที่ใช้วิเคราะห์คือ Teachable Machine (Image Model) ของ Google ซึ่งทำงานในเบราว์เซอร์ผ่าน TensorFlow.js
+      — เป็น API/ไลบรารีคนละชุดจาก Google Sheets ที่ใช้แสดงข้อมูลเซนเซอร์ด้านบน<br />
+      สามารถเทรนโมเดลของคุณเองได้ฟรีที่ <strong>teachablemachine.withgoogle.com</strong> แล้ววาง "Model URL"
+      ที่ได้จากขั้นตอน Export &gt; Upload (Sharable link) แทนที่ <code>MODEL_URL</code> ใน dashboard.js
+      หากยังไม่ตั้งค่า ระบบจะใช้ผลวิเคราะห์ตัวอย่าง (Mock) แทน
+    </p>
+  </div>
+</div>
+
 <div id="toast-stack"></div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.11.0/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8.5/dist/teachablemachine-image.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/dashboard.js"></script>
 </body>

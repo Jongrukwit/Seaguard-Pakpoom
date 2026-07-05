@@ -489,11 +489,172 @@ body.learning-body {
 }
 
 .compare-label.left {
-  left: 5px;
+  left: 6px;
 }
 
 .compare-label.right {
   right: 16px;
+}
+
+/* ---- Spec / standard cards (water quality standard, seedling prep) ---- */
+.spec-card {
+  padding: 30px;
+}
+
+.spec-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  background: rgba(63, 186, 194, 0.08);
+  font-size: 0.92rem;
+}
+
+.spec-row .k {
+  color: var(--ink-soft);
+}
+
+.spec-row .v {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  color: var(--seagrass-dark);
+  text-align: right;
+}
+
+[data-theme="dark"] .spec-row .v {
+  color: var(--lagoon-light);
+}
+
+.spec-note {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin-top: 14px;
+  line-height: 1.7;
+}
+
+.spec-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* ---- Pre-cultivation planning steps ---- */
+.plan-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.plan-step {
+  padding: 28px;
+  position: relative;
+}
+
+.plan-step .step-num {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--seagrass), var(--lagoon));
+  color: var(--foam);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+}
+
+.plan-step h3 {
+  font-size: 1.02rem;
+  margin-bottom: 8px;
+  color: var(--deep-sea);
+}
+
+[data-theme="dark"] .plan-step h3 {
+  color: var(--foam);
+}
+
+.plan-step p {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
+.plan-step-arrow {
+  position: absolute;
+  top: 34px;
+  right: -26px;
+  font-size: 1.3rem;
+  color: var(--lagoon);
+  display: none;
+}
+
+@media (min-width: 951px) {
+  .plan-step-arrow {
+    display: block;
+  }
+}
+
+/* ---- Substrate legend + slot labels for the planting zone ---- */
+.substrate-legend {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.substrate-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-family: var(--font-ui);
+}
+
+.substrate-chip.good {
+  background: rgba(46, 125, 91, 0.14);
+  color: var(--seagrass-dark);
+}
+
+[data-theme="dark"] .substrate-chip.good {
+  color: var(--lagoon-light);
+  background: rgba(63, 186, 194, 0.15);
+}
+
+.substrate-chip.bad {
+  background: rgba(255, 139, 123, 0.16);
+  color: #B54332;
+}
+
+[data-theme="dark"] .substrate-chip.bad {
+  color: var(--coral);
+}
+
+.plant-slot-label {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 0.68rem;
+  font-family: var(--font-ui);
+  background: rgba(11, 61, 66, 0.75);
+  color: var(--foam);
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-top: 4px;
+  pointer-events: none;
 }
 
 @media (max-width: 950px) {
@@ -503,6 +664,11 @@ body.learning-body {
 
   .plant-lab,
   .sim-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .plan-steps,
+  .spec-grid-2 {
     grid-template-columns: 1fr;
   }
 }
